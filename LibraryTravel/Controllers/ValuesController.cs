@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -32,7 +33,8 @@ namespace LibraryTravel.Controllers
         [HttpGet("{id}")]
         public Libros Get(int id)
         {
-            return "value";
+            Libros libros = _context.Libros.Where(x=> x.Isbn == id).FirstOrDefault();
+            return libros;
         }
 
         // POST api/<ValuesController>
